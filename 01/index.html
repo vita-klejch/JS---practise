@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="root">xxxxx asdasd</div>
     <div id="root2">xxxxx asdasd</div>
     <div class="root3">
       <form action="">
-        <input type="number" id="number_input" onchange="count_celsius()" />
+        <input type="number" id="number_input" onchange="count_temperature()" />
       </form>
       <h3 id="display_celsius">TEPLOTA</h3>
       <h3 id="display_fahrenheit">TEPLOTA</h3>
@@ -20,6 +21,25 @@
       <input type="text" name="" id="text_input" />
       <button id="start_btn" onclick="change_text()">START</button>
       <h3 id="text_output">PLACE</h3>
+    </div>
+    <div class="root5">
+      <input type="text" id="sentence_input" onchange="handleChange()" />
+      <h3 id="sentence_output">SENTENCE</h3>
+    </div>
+    <div class="root6">
+      <button>KLIK</button>
+    </div>
+    <div class="root7">
+      <div id="object_to_move"></div>
+    </div>
+    <div class="root8">
+      <div>
+        <input type="text" id="cookie_message" /><button id="cookie_save">
+          SAVE COOKIE input
+        </button>
+      </div>
+      <div><button id="cookie_read">COOKIE READ</button></div>
+      <div id="cookie_info"></div>
     </div>
   </body>
   <script src="script.js"></script>
