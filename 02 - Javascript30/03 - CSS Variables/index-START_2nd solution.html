@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scoped CSS Variables and JS</title>
+  </head>
+  <body>
+    <h2>Update CSS Variables with <span class="hl">JS</span></h2>
+
+    <div class="controls">
+      <label for="spacing">Spacing:</label>
+      <input
+        id="spacing"
+        type="range"
+        name="spacing"
+        min="10"
+        max="200"
+        value="10"
+        data-sizing="px"
+      />
+
+      <label for="blur">Blur:</label>
+      <input
+        id="blur"
+        type="range"
+        name="blur"
+        min="0"
+        max="25"
+        value="10"
+        data-sizing="px"
+      />
+
+      <label for="base">Base Color</label>
+      <input id="base" type="color" name="base" value="#ffc600" />
+    </div>
+
+    <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" />
+
+    <style>
+      /*
+      misc styles, nothing to do with CSS variables
+    */
+      :root {
+        --main-color: #ffc600;
+        --img-spacing: 10px;
+        --img-blur: 10px;
+      }
+      .hl {
+        color: var(--main-color);
+      }
+
+      body {
+        text-align: center;
+        background: #193549;
+        color: white;
+        font-family: "helvetica neue", sans-serif;
+        font-weight: 100;
+        font-size: 50px;
+      }
+
+      .controls {
+        margin-bottom: 50px;
+      }
+
+      input {
+        width: 100px;
+      }
+
+      img {
+        border-spacing: 10px;
+        padding: var(--img-spacing);
+        background-color: var(--main-color);
+        filter: blur(var(--img-blur));
+      }
+    </style>
+
+    <script>
+      // My SECOND solution
+      const blur_input = document.getElementById("blur");
+      const spacing_input = document.getElementById("spacing");
+      const color_input = document.getElementById("base");
+
+      const img = document.querySelector("img");
+      const root = document.querySelector(":root");
+
+      blur_input.addEventListener("input", () => {
+        img.style.filter = `blur(${blur_input.value}px)`;
+        root.style.setProperty("--img-blur", blur_input.value + "px");
+        // img.style.filter = `blur(${blur_input.value}px)`;
+      });
+
+      spacing_input.addEventListener("input", () => {
+        root.style.setProperty("--img-spacing", spacing_input.value + "px");
+      });
+
+      color_input.addEventListener("input", () => {
+        root.style.setProperty("--main-color", color_input.value);
+      });
+    </script>
+  </body>
+</html>
