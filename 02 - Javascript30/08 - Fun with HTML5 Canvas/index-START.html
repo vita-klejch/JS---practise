@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML5 Canvas</title>
+  </head>
+  <body>
+    <canvas id="draw" width="800" height="800"></canvas>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+    </style>
+    <script>
+      const canvas = document.querySelector("canvas");
+      const ctx = canvas.getContext("2d");
+      let coord = { x: 0, y: 0 };
+      let paint = false;
+      let color = 0;
+      let lineWidth = 1;
+      let lineStep = 1;
+
+      document.addEventListener("mousedown", startPainting);
+      document.addEventListener("mouseup", stopPainting);
+      document.addEventListener("mousemove", sketch);
+      window.addEventListener("resize", resize);
+
+      resize();
+
+      function getPosition(event) {
+        coord.x = event.clientX - canvas.offsetLeft;
+        coord.y = event.clientY - canvas.offsetTop;
+      }
+      function startPainting(event) {
+        paint = true;
+        getPosition(event);
+      }
+      function stopPainting() {
+        paint = false;
+      }
+      function resize() {
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+      }
+
+      function sketch(event) {
+        if (!paint) return;
+        ctx.beginPath();
+
+        ctx.lineWidth = lineWidth;
+        lineWidth += lineStep;
+        console.log(lineWidth);
+        if (lineWidth == 100) {
+          lineStep = -1;
+        } else if (lineWidth == 0) {
+          lineStep = 1;
+        }
+
+        ctx.lineCap = "round";
+        color++;
+        ctx.strokeStyle = `hsl(${color}, 100%, 50%)`;
+        ctx.moveTo(coord.x, coord.y);
+        getPosition(event);
+        ctx.lineTo(coord.x, coord.y);
+        ctx.stroke();
+      }
+    </script>
+  </body>
+</html>
