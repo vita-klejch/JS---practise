@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Type Ahead 👀</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form class="search-form">
+      <input type="text" class="search" placeholder="City or State" />
+      <ul class="suggestions">
+        <li>Filter for a city</li>
+        <li>or a state</li>
+      </ul>
+    </form>
+    <script>
+      let data = [];
+      const endpoint =
+        "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+      fetch(endpoint)
+        .then((response) => response.json())
+        .then((JSONdata) => {
+          data = JSONdata;
+          console.log("data recieved");
+        });
+
+      input = document.querySelector("input");
+      suggest = document.querySelector(".suggestions");
+
+      function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+          parent.removeChild(parent.firstChild);
+        }
+      }
+      function addSuggestions(myArray, re) {
+        removeAllChildNodes(suggest);
+        myArray.forEach((element) => {
+          let fullName = `${element.city}, ${element.state}`;
+          fullName = fullName.replace(re, function (m) {
+            return "<span class='hl'>" + m + "</span>";
+          });
+          let liElement = document.createElement("li");
+          let localNumber = parseInt(element.population).toLocaleString(
+            "en-US"
+          );
+          liElement.innerHTML = `<span>${fullName}</span><span class="population">${localNumber}</span>`;
+          suggest.appendChild(liElement);
+        });
+      }
+
+      function filterInput() {
+        const re = new RegExp(this.value, "gi");
+        let filtered_array = data.filter(
+          (element) => element["city"].match(re) || element["state"].match(re)
+        );
+        addSuggestions(filtered_array, re);
+      }
+
+      input.addEventListener("change", filterInput);
+      input.addEventListener("keyup", filterInput);
+    </script>
+  </body>
+</html>
