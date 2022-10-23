@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "Hugo", age: 8 },
+      ];
+
+      const p = document.querySelector("p");
+      function makeGreen() {
+        // const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
+
+      // Regular
+      console.log(dogs);
+
+      // Interpolated
+      console.log("First dog name is %s", dogs[0].name);
+
+      // Styled
+      console.log(
+        "%cTHIS%c is some %cSTYLED text%c",
+        "font-size: 25px; background: red",
+        "",
+        "color: blue; margin: 10px",
+        ""
+      );
+
+      // warning!
+      console.warn("Be aware of dogs!");
+
+      // Error :|
+      console.error("Something went wrong but not dogs.");
+
+      // Info
+      console.info(`Dogs names are ${dogs[0].name} and ${dogs[1].name}.`);
+
+      // Testing
+      console.assert(dogs[1].age === 8, "Hugo is not 8 years old");
+      console.assert(dogs[1].age === 4, "Hugo is not 4 years old");
+
+      // clearing
+      // console.clear();
+
+      // Viewing DOM Elements
+      console.log(p);
+      console.dir(p);
+
+      // Grouping together
+      console.group("INFO BOX"); // Create a group labelled 'Outer'
+      console.log("informations about dogs"); // Log inside 'Outer'
+      console.groupCollapsed("Dogs"); // Create a group labelled 'Inner', collapsed
+      dogs.forEach((dog) => {
+        console.log("Name: " + dog.name);
+        console.log("Age: " + dog.age);
+      });
+      console.groupEnd(); // End of current group, 'Inner'
+      console.groupEnd(); // End of current group, 'Outer'
+
+      // counting
+      dogs.forEach((dog) => console.count("Dog "));
+
+      // timing
+      console.time("timer");
+      setTimeout(() => {
+        console.log("Doing some activity");
+        console.timeEnd("timer");
+      }, 3000);
+    </script>
+  </body>
+</html>
