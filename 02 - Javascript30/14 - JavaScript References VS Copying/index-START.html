@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS Reference VS Copy</title>
+  </head>
+  <body>
+    <script>
+      // start with strings, numbers and booleans
+
+      // Let's say we have an array
+      const players = ["Wes", "Sarah", "Ryan", "Poppy"];
+
+      // and we want to make a copy of it.
+
+      // You might think we can just do something like this:
+      const players2 = players;
+
+      // however what happens when we update that array?
+      players2[0] = "Vita";
+
+      // now here is the problem!
+      console.log(players);
+
+      // oh no - we have edited the original array too!
+
+      // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+
+      // So, how do we fix this? We take a copy instead!
+
+      // one way
+      players4 = players.slice();
+      players4[0] = "XXXXX";
+      console.log(players);
+
+      // or create a new array and concat the old one in
+      players_concat = [].concat(players);
+      players_concat[0] = "CONCAT player";
+      console.log(players_concat);
+
+      // or use the new ES6 Spread
+      const players3 = [...players];
+      players3[1] = "XXXXXXXXXX";
+      console.log(players3);
+      console.log(players);
+
+      // now when we update it, the original one isn't changed
+
+      // The same thing goes for objects, let's say we have a person object
+
+      // with Objects
+      const person = {
+        name: "Wes Bos",
+        age: 80,
+      };
+
+      // and think we make a copy:
+      const person2 = person;
+      // person2.age = 42;
+      // console.log(person);
+
+      // how do we take a copy instead?
+
+      // We will hopefully soon see the object ...spread
+      const person3 = { ...person };
+      person3.age = 33;
+      console.log(person);
+      console.log(person3);
+
+      // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    </script>
+  </body>
+</html>
