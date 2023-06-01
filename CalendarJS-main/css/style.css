@@ -1,0 +1,55 @@
+#navMenu,
+#divListOfevents,
+#containerAboutApp,
+#sortBy {
+    background: rgb(21, 83, 167);
+    background: linear-gradient(90deg, rgba(21, 83, 167, 1) 0%, rgba(80, 85, 218, 1) 50%, rgba(103, 80, 218, 1) 100%);
+}
+
+
+#navMenu {
+
+    font-weight: bold;
+}
+
+#createdBy {
+    text-align: center;
+    font-size: 1.1rem;
+    background-color: rgb(33, 2, 66);
+    color: rgb(220, 220, 220);
+}
+
+
+
+#sortByTitle {
+    color: white;
+    font-size: 1.8em;
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+}
+
+
+#createEvent {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 0;
+}
+
+#saveEventButton {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#containerAboutApp {
+    color: white;
+}
+
+#linkedIn {
+    text-decoration: none;
+    color: rgb(21, 83, 167);
+    font-weight: bold;
+    font-size: 1.2rem;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style_basic.css">
+    <link rel="shortcut icon" href="css/health.ico" />
+    <title>Správa pojištěných</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Registr pojištěnců</h1>
+        </div>
+        <nav id="menu">
+            <ul>
+                <li id="pojistenci">Pojištěnci</li>
+                <li id="oAplikaci">O aplikaci</li>
+                <li id="kontakt">Kontakt</li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article class="articleBackground first">
+            <article id="clanekFormular">
+                <button id="otevritFormular">Nový pojištěnec</button>
+            </article>
+            <article id="seznam">
+                <div>
+                    <h1>Seznam pojištěnců</h1>
+                    <table id="tabulkaSeznam">
+                        <thead>
+                            <th>Jméno a příjmení</th>
+                            <th>Telefon</th>
+                            <th>Věk</th>
+                        </thead>
+                    </table>
+                </div>
+            </article>
+        </article>
+        <article class="articleBackground second">
+            <h1>O aplikaci</h1>
+            <ul>
+                <li>Tato aplikace byla vytvořena jako závěrečný projekt kurzu Programátor WWW aplikací (JavaScript) od
+                    itnetwork.cz</li>
+                <li>Aplikaci vtvořil <u><strong>Evgeniy Toropitsyn</strong></u></li>
+                <li>Aktuální verze aplikace využívá LocalStorage (JSON)</li>
+                <li>no bootstrap</li>
+            </ul>
+        </article>
+        <article class="articleBackground third">
+            <h1>Please contact me</h1>
+            <p>See my <a href="https://www.linkedin.com/in/evgeniy-toropitsyn-78b44b127/"><strong>Linkedin
+                        profile</strong></a></p>
+            <p><u>E-mail</u>:<br><strong> <i>Toropitsynevgeniy@gmail.com</i></strong>
+            </p>
+        </article>
+    </section>
+    <footer>
+        &copy;EvTorGen 2022
+    </footer>
+
+
+    <script src="js/injured.js"></script>
+    <script src="js/listOfInjured.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/scroll.js"></script>
+</body>
+
+</html>
